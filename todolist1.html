@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>TODO APP</title>
+    <style>
+        body {
+            background-color: black;
+            color: white;
+            
+            margin-top: 40px;
+        }
+
+        #div1{
+            margin: auto;
+            text-align: center;
+            background-color: #121212;
+            opacity: 0.9;
+            width: 600px;
+        }
+
+        input { 
+            width: 400px;
+            border-radius: 35px;
+            text-align: center;
+        }
+
+        button {
+            width: 100px;
+            background-color: aqua;
+            border-radius: 20px;
+        }
+
+        #div2{
+            padding: 1px;
+            width: 600px;
+            min-height: 25rem;
+            margin: auto;
+            margin-top: 15px;
+            background-color: #121212;
+            opacity: 0.9;
+        }
+
+        ul{
+            
+            list-style-type: none;
+        }
+
+        li {
+            display: flex;
+            justify-content: space-between;
+            width: 90%;
+            padding: 10px;
+            margin-bottom: 10px;
+            background-color: #1f1f1f;
+            border-radius: 5px;
+        }
+
+        li button {
+            background-color: red;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <br/>
+        <h1>TODO APP</h1>
+        <br/>
+        <input placeholder="enter your task"/>
+        <button>Add Task</button>
+        <br/><br/>
+    </div>
+
+    <div id="div2">
+        <ul>
+        </ul>
+    </div>
+
+</body>
+<script>
+    let ul = document.querySelector("ul");
+    let inp = document.querySelector("input");
+    let btn = document.querySelector("button");
+
+    function myFunction() {
+        let item = document.createElement("li");
+        item.innerText = inp.value;
+        console.log("Item added successfully!");
+        let delbtn = document.createElement("button");
+        delbtn.innerText = "delete";
+        delbtn.classList.add("delete");
+
+        // Add event listener to the delete button as soon as it is created
+        delbtn.addEventListener("click", function() {
+            ul.removeChild(item);
+            console.log("Item deleted successfully!")
+        });
+
+        item.appendChild(delbtn);
+        ul.appendChild(item);
+
+        inp.value = "";
+    }
+    
+    btn.addEventListener("click",myFunction);
+    
+    inp.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+            myFunction();
+        }
+    });
+    
+</script>
+</html>
